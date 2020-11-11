@@ -6,7 +6,7 @@
 
 ## 使用方法
 ### 初次使用
-1. 打开 ACT → 插件 → ngld 悬浮窗插件 → 新建
+1. 打开 ACT → 插件 → ngld 悬浮窗插件 → 新建。
 2. 名称：随意，预设：自订，种类：数据统计。
 3. 悬浮窗路径：`http://ffxiv.duetime.cn:8014/ffxivkeyword.html`。
 
@@ -22,7 +22,8 @@
 
 > Webhook 是什么？
 >
-> 当关键字被触发，插件将会以 POST 方式访问 `<地址>`，并且其中的数据为 `{<参数名>: <消息内容>}`
+> 当关键字被触发，插件将会以 POST 方式访问 `<地址>`，并且其中的数据为 `{<参数名>: <消息内容>}`。
+>
 > 例：你可以使用 [Slack](https://api.slack.com/apps) 设置 Webhook。新建一个 APP 激活（Activate） "Incoming Webhooks"，然后 "Add New Webhook to Workspace"，你将得到一个地址 `https://hooks.slack.com/services/ABC/DEF/GHIJKLMN`（默认参数名 `text`）。将这两者设置为插件的 Webhook，当关键字出现时，Slack 会将消息转发给你。在手机上安装 Slack，你就可以用手机接受关键字提醒了。
 
 ### TTS 语音播报
