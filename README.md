@@ -1,6 +1,6 @@
 # FFXIV Keyword Notify
 
-🇺🇸English | [🇨🇳简体中文](https://github.com/FFXIV-Plugins/ffxiv-keyword-notif/blob/main/README-CN.md)
+🇺🇸English | [🇨🇳简体中文](README-CN.md)
 
 This is a plugin for FFXIV ACT Ngld Overlay. Add keyword, and when the keyword show up in chat window, notify in voice and/or webhook.
 
