@@ -5,11 +5,11 @@
 这是一个用于 FF14 ACT 插件 Ngld 悬浮窗插件的插件。添加关键字后，当关键字出现在聊天栏时，会有语音提醒和/或 Webhook 提醒。
 
 ## Screenshots
-可切换 Webhook / TTS 的开关。
-![screenshot-01](resources/screenshot-01.png)
+* 显示当前关键字列表；可切换 Webhook / TTS 的开关。
+    * ![screenshot-01](resources/screenshot-01.png)
 
-平时，只显示一个图标。
-![screenshot-02](resources/screenshot-02.png)
+* 平时，只显示一个图标。点击以展开和隐藏界面。
+    * ![screenshot-02](resources/screenshot-02.png)
 
 ## 使用方法
 ### 初次使用
