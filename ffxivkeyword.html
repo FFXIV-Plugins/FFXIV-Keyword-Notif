@@ -21,16 +21,18 @@
         <div class="container-fluid bg-transparent">
             <div class="row mt-1">
                 <div class="col">
-                <span class="btn btn-outline-light btn-sm bg-opacity-dark" onclick="$('.hidable').fadeToggle('fast')">🔑</span>
-                    <label id="webhook-btn" class="hidable mb-0 btn btn-outline-light btn-sm bg-opacity-dark">
-                        <input type="checkbox" name="webhook" onclick="Webhook.save()">
-                        📡Webhook
-                    </label>
-                    <label class="hidable mb-0 btn btn-outline-light btn-sm bg-opacity-dark">
-                        <input type="checkbox" name="tts" onclick="Tts.save()">
-                        🎙TTS
-                    </label>
-                    <span class="hidable btn btn-outline-light btn-sm bg-opacity-dark" onclick="$('#help-div').fadeToggle('fast')">❔</span>
+                    <span class="btn btn-outline-light btn-sm bg-opacity-dark" onclick="$('.hidable').fadeToggle('fast')">🔑</span>
+                    <span class="hidable">
+                        <label id="webhook-btn" class="mb-0 btn btn-outline-light btn-sm bg-opacity-dark">
+                            <input type="checkbox" name="webhook" onclick="Webhook.save()">
+                            📡Webhook
+                        </label>
+                        <label class="mb-0 btn btn-outline-light btn-sm bg-opacity-dark">
+                            <input type="checkbox" name="tts" onclick="Tts.save()">
+                            🎙TTS
+                        </label>
+                        <span class="btn btn-outline-light btn-sm bg-opacity-dark" onclick="$('#help-div').fadeToggle('fast')">❔</span>
+                    </span>
                 </div><!--.col-->
             </div><!--.row-->
             <div class="row mt-1 hidable">

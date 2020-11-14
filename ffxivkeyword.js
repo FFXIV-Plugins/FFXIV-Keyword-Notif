@@ -107,7 +107,6 @@ const Webhook = {
         Config.set("webhook:url", url ? url : "")
         Config.set("webhook:key", key ? key : "text")
         Webhook.updateHtml()
-        $('a').attr('href', url)
     },
     updateHtml: function () {
         let webhook = Webhook.get()
@@ -117,6 +116,7 @@ const Webhook = {
         } else {
             $("#webhook-btn").hide()
             $("#webhook-info").text("")
+            Webhook.checkbox().checked = false
         }
         Webhook.load()
     },
