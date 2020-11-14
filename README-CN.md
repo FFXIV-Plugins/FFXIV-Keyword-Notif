@@ -2,7 +2,7 @@
 
 [🇺🇸English](README.md) | 🇨🇳简体中文
 
-这是一个用于 FF14 ACT 插件 Ngld 悬浮窗插件的插件。添加关键字后，当关键字出现在聊天栏时，会有语音提醒和/或 Webhook 提醒。
+[🔗FFXIV Keyword Notify](https://ffxiv-plugins.github.io/ffxiv-keyword-notif/) 这是一个用于 FF14 ACT 插件 Ngld 悬浮窗插件的插件。添加关键字后，当关键字出现在聊天栏时，会有语音提醒和/或 Webhook 提醒。
 
 ## 截图
 * 显示当前关键字列表；可切换 Webhook / TTS 的开关。
@@ -15,7 +15,7 @@
 ### 初次使用
 1. 打开 ACT → 插件 → ngld 悬浮窗插件 → 新建。
 2. 名称：随意，预设：自订，种类：数据统计。
-3. 悬浮窗路径：`http://ffxiv.duetime.cn:8014/ffxivkeyword.html`。
+3. 悬浮窗路径：`https://ffxiv-plugins.github.io/ffxiv-keyword-notif/ffxivkeyword.html`。
 
 ### 增删关键字
 1. 在游戏的聊天窗口内，输入 `/e 关键字 完成了探险` 来将 “完成了探险” 加入关键字列表。

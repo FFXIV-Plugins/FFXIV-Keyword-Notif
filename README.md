@@ -2,7 +2,7 @@
 
 🇺🇸English | [🇨🇳简体中文](README-CN.md)
 
-This is a plugin for FFXIV ACT Ngld Overlay. Add keyword, and when the keyword show up in chat window, notify in voice and/or webhook.
+[🔗FFXIV Keyword Notify](https://ffxiv-plugins.github.io/ffxiv-keyword-notif/) This is a plugin for FFXIV ACT Ngld Overlay. Add keyword, and when the keyword show up in chat window, notify in voice and/or webhook.
 
 ## Screenshots
 * Show keywords and toggle Webhook and TTS on/off.
@@ -15,7 +15,7 @@ This is a plugin for FFXIV ACT Ngld Overlay. Add keyword, and when the keyword s
 ### Get Started
 1. Open ACT → Plugin → ngld Overlay → new.
 2. Name: Keyword, Preset: Custom, Catagory: Data.
-3. Overlay Path: `http://ffxiv.duetime.cn:8014/ffxivkeyword.html`.
+3. Overlay Path: `https://ffxiv-plugins.github.io/ffxiv-keyword-notif/ffxivkeyword.html`.
 
 ### Add/Remove Keywords
 1. In game chat window, say `/e keyword foo` to add 'foo' as a keyword;
