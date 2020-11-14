@@ -4,6 +4,10 @@
 
 This is a plugin for FFXIV ACT Ngld Overlay. Add keyword, and when the keyword show up in chat window, notify in voice and/or webhook.
 
+## Screenshots
+![screenshot-01](resources/screenshot-01.png)
+![screenshot-02](resources/screenshot-02.png)
+
 ## Usage
 ### Get Started
 1. Open ACT → Plugin → ngld Overlay → new.

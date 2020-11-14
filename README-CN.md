@@ -4,6 +4,10 @@
 
 这是一个用于 FF14 ACT 插件 Ngld 悬浮窗插件的插件。添加关键字后，当关键字出现在聊天栏时，会有语音提醒和/或 Webhook 提醒。
 
+## Screenshots
+![screenshot-01](resources/screenshot-01.png)
+![screenshot-02](resources/screenshot-02.png)
+
 ## 使用方法
 ### 初次使用
 1. 打开 ACT → 插件 → ngld 悬浮窗插件 → 新建。
