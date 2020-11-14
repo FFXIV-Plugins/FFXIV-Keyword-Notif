@@ -112,10 +112,10 @@ const Webhook = {
     updateHtml: function () {
         let webhook = Webhook.get()
         if (webhook) {
-            $("#webhook-div").show()
+            $("#webhook-btn").show()
             $("#webhook-info").text(`📡${webhook.url} {${webhook.key}:}`)
         } else {
-            $("#webhook-div").hide()
+            $("#webhook-btn").hide()
             $("#webhook-info").text("")
         }
         Webhook.load()
