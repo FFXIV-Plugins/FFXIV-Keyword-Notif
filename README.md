@@ -15,7 +15,7 @@
 ### Get Started
 1. Open ACT → Plugin → ngld Overlay → new.
 2. Name: Keyword, Preset: Custom, Catagory: Data.
-3. Overlay Path: `https://ffxiv-plugins.github.io/ffxiv-keyword-notif/ffxivkeyword.html`.
+3. Overlay Path: `https://ffxiv-plugins.github.io/ffxiv-keyword-notif/ffxivkeyword.html`
 
 ### Add/Remove Keywords
 1. In game chat window, say `/e keyword foo` to add 'foo' as a keyword;
