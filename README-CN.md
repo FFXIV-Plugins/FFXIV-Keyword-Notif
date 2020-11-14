@@ -24,7 +24,6 @@
 
 ### Webhook
 * 在游戏的聊天窗口内，输入 `/e webhook <地址> <参数名>` 来加入关键字提示的 Webhook 通知。
-*
 * 点击“📡WEBHOOK”按钮来禁用/启用 Webhook 功能。
 
 > Webhook 是什么？
