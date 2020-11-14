@@ -1,8 +1,8 @@
 # FFXIV 关键字提醒
 
-[🇺🇸English](README.md) | 🇨🇳简体中文
+[🇺🇸 English](README.md) | 🇨🇳 简体中文
 
-[🔗FFXIV Keyword Notif](https://ffxiv-plugins.github.io/FFXIV-Keyword-Notif/) 这是一个用于 FF14 ACT 插件 Ngld 悬浮窗插件的插件。添加关键字后，当关键字出现在聊天栏时，会有语音提醒和/或 Webhook 提醒。
+[🔗 FFXIV Keyword Notif](https://ffxiv-plugins.github.io/FFXIV-Keyword-Notif/) 这是一个用于 FF14 ACT 插件 Ngld 悬浮窗插件的插件。添加关键字后，当关键字出现在聊天栏时，会有语音提醒和/或 Webhook 提醒。
 
 ## 截图
 * 显示当前关键字列表；可切换 Webhook / TTS 的开关。
