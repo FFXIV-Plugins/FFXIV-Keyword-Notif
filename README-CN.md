@@ -35,6 +35,9 @@
 ### TTS 语音播报
 * 点击“🎙TTS”按钮来禁用/启用 TTS 功能。
 
+### NPC 对话语音
+* 点击“🗣️NPC”按钮来禁用/启用 NPC 对话语音功能。
+
 ## 第三方库
 * jQuery: https://www.bootcdn.cn/jquery/
 * BootStrap4: https://www.bootcdn.cn/twitter-bootstrap/

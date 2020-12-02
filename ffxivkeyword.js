@@ -65,6 +65,26 @@ const Keywords = {
     }
 }
 
+const NpcSay = {
+    checkbox: () => document.querySelector("input[name='npcsay']"),
+    updateHtml: function () {
+        NpcSay.load()
+    },
+    ready: () => {
+        if (NpcSay.checkbox().checked) {
+            return true
+        } else {
+            return false
+        }
+    },
+    save: () => {
+        Config.set("npcsay:on", NpcSay.checkbox().checked ? "on" : "off")
+    },
+    load: () => {
+        NpcSay.checkbox().checked = Config.get("npcsay:on") === "on" ? true : false
+    }
+}
+
 const Tts = {
     checkbox: () => document.querySelector("input[name='tts']"),
     updateHtml: function () {
@@ -149,8 +169,9 @@ function update (data) {
     }
     let [logType, logTime, ...logProperties] = data.line
     /* for more log types, visit: https://github.com/quisquous/cactbot/blob/main/docs/LogGuide.md#00-logline */
+    // console.debug(`logtype:${logType}: ${logProperties}`)
     if (logType === '00') {
-        let [logUnknown, logNpc, logText, logId] = logProperties
+        let [logSubtype, logNpc, logText, logId] = logProperties
         let webhook = Webhook.get()
         for (let kw of Keywords.get()) {
             if (kw) {
@@ -174,6 +195,11 @@ function update (data) {
                 Webhook.set()
             }
         }
+        if (logSubtype == '003d') {  // Npc conversation.
+            if (NpcSay.ready()) {
+                Tts.send(logText)  // logText contains only the content. logNpc for NPC name.
+            }
+        }
     }
 }
 
@@ -189,4 +215,5 @@ $(function () {
     Keywords.updateHtml()
     Webhook.updateHtml()
     Tts.updateHtml()
+    NpcSay.updateHtml()
 })

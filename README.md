@@ -35,6 +35,9 @@
 ### TTS
 * Click on "🎙TTS" Button to switch text-to-speech notification on/off.
 
+### Voices for NPC
+* Click on "🗣️NPC" Button to switch voices for NPC on/off.
+
 ## 3rd Party Libs
 * jQuery: https://www.bootcdn.cn/jquery/
 * BootStrap4: https://www.bootcdn.cn/twitter-bootstrap/
