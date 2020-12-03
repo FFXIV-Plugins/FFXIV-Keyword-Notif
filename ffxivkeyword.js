@@ -43,7 +43,7 @@ const Keywords = {
     },
     updateHtml: function () {
         $("#keyword-div .keyword").remove()
-        let keywords = this.get() || []
+        let keywords = Keywords.get() || []
         for (let kw of keywords) {
             if (kw) {
                 $("#keyword-div").append(`<span class="mr-1 keyword btn btn-outline-light btn-sm bg-opacity-dark" onclick="Keywords.remove('${kw}')">${kw}✖</span>`)
@@ -51,13 +51,13 @@ const Keywords = {
         }
     },
     add: function (kw) {
-        let keywords = this.get()
+        let keywords = Keywords.get()
         let newKeywords = keywords ? keywords.concat(kw) : [].concat(kw)
         Config.set('keyword', newKeywords.join(','))
         Keywords.updateHtml()
     },
     remove: function (kw) {
-        let keywords = this.get()
+        let keywords = Keywords.get()
         keywords.splice(keywords.indexOf(kw), 1)
         Config.set('keyword', keywords.join(','))
         Keywords.updateHtml()
@@ -73,20 +73,20 @@ const Keywords = {
 
 const NpcSay = {
     checkbox: () => document.querySelector("input[name='npcsay']"),
-    updateHtml: () => this.load(),
-    ready: () => this.checkbox().checked ? true : false,
-    save: () => Config.set("npcsay:on", this.checkbox().checked ? "on" : "off"),
-    load: () => this.checkbox().checked = Config.get("npcsay:on") === "on" ? true : false,
+    updateHtml: () => NpcSay.load(),
+    ready: () => NpcSay.checkbox().checked ? true : false,
+    save: () => Config.set("npcsay:on", NpcSay.checkbox().checked ? "on" : "off"),
+    load: () => NpcSay.checkbox().checked = Config.get("npcsay:on") === "on" ? true : false,
 }
 
 const Tts = {
     checkbox: () => document.querySelector("input[name='tts']"),
-    updateHtml: () => this.load(),
-    ready: () => this.checkbox().checked ? true : false,
-    save: () => Config.set("tts:on", this.checkbox().checked ? "on" : "off"),
-    load: () => this.checkbox().checked = Config.get("tts:on") === "on" ? true : false,
+    updateHtml: () => Tts.load(),
+    ready: () => Tts.checkbox().checked ? true : false,
+    save: () => Config.set("tts:on", Tts.checkbox().checked ? "on" : "off"),
+    load: () => Tts.checkbox().checked = Config.get("tts:on") === "on" ? true : false,
     send: (data) => {  // text to speech
-        if (this.ready()) {
+        if (Tts.ready()) {
             callOverlayHandler({ call: 'say', text: data })
         }
     }
@@ -108,25 +108,25 @@ const Webhook = {
     set: ({url, key} = {}) => {
         Config.set("webhook:url", url ? url : "")
         Config.set("webhook:key", key ? key : "text")
-        this.updateHtml()
+        Webhook.updateHtml()
     },
     updateHtml: () => {
-        let webhook = this.get()
+        let webhook = Webhook.get()
         if (webhook) {
             $("#webhook-btn").show()
             $("#webhook-info").text(`📡${webhook.url} {${webhook.key}:}`)
         } else {
             $("#webhook-btn").hide()
             $("#webhook-info").text("")
-            this.checkbox().checked = false
+            Webhook.checkbox().checked = false
         }
-        this.load()
+        Webhook.load()
     },
-    ready: () => (this.get() && this.checkbox().checked) ? true : false,
-    save: () => Config.set("webhook:on", this.checkbox().checked ? "on" : "off"),
-    load: () => this.checkbox().checked = Config.get("webhook:on") === "on" ? true : false,
+    ready: () => (Webhook.get() && Webhook.checkbox().checked) ? true : false,
+    save: () => Config.set("webhook:on", Webhook.checkbox().checked ? "on" : "off"),
+    load: () => Webhook.checkbox().checked = Config.get("webhook:on") === "on" ? true : false,
     send: (url, key, data) => {  // text to webhook
-        if (this.ready()) {
+        if (Webhook.ready()) {
             let param = {}
             param[key] = data
             $.post(url, JSON.stringify(param))
