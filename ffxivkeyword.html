@@ -19,8 +19,8 @@
     </head>
     <body>
         <div class="container-fluid bg-transparent">
-            <div class="row mt-1">
-                <div class="col">
+            <div class="row">
+                <div class="col p-1">
                     <span class="btn btn-outline-light btn-sm bg-opacity-dark" onclick="$('.hidable').fadeToggle('fast')">🔑</span>
                     <span class="hidable">
                         <label id="webhook-btn" class="mb-0 btn btn-outline-dark text-white btn-sm bg-opacity-dark">
@@ -39,13 +39,13 @@
                     </span>
                 </div><!--.col-->
             </div><!--.row-->
-            <div class="row mt-1 hidable">
-                <div class="col">
+            <div class="row hidable">
+                <div class="col p-1">
                     <span id="keyword-div" class="bg-transparent"></span>
                 </div><!--.col-->
             </div><!--.row-->
             <div id="help-div" class="hidden row mt-1 text-nowrap text-truncate">
-                <div class="col">
+                <div class="col p-1">
                     <div>
                         <code class="chinese text-light bg-opacity-dark">/e 关键字 [任意词] · /e webhook [地址] [参数名]</code>
                     </div>
