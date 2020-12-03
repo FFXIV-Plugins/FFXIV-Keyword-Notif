@@ -46,7 +46,7 @@ const Keywords = {
         let keywords = Keywords.get() || []
         for (let kw of keywords) {
             if (kw) {
-                $("#keyword-div").append(`<span class="mr-1 keyword btn btn-outline-dark btn-sm bg-opacity-dark" onclick="Keywords.remove('${kw}')">${kw}✖</span>`)
+                $("#keyword-div").append(`<span class="mr-1 keyword btn btn-outline-dark text-white btn-sm bg-opacity-dark" onclick="Keywords.remove('${kw}')">${kw}✖</span>`)
             }
         }
     },
