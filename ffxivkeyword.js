@@ -2,7 +2,7 @@ function isFirstTime () {
     if (Keywords.get()) {
         return false
     } else {
-        // for in-game text search, visit: https://strings.wakingsands.com/
+        /* for in-game text search, visit: https://strings.wakingsands.com/ */
         let defaultWords = [
             "招募队员结束，队员已经集齐",
             "成功完成了探险",
@@ -46,7 +46,7 @@ const Keywords = {
         let keywords = Keywords.get() || []
         for (let kw of keywords) {
             if (kw) {
-                $("#keyword-div").append(`<span class="mr-1 keyword btn btn-outline-light btn-sm bg-opacity-dark" onclick="Keywords.remove('${kw}')">${kw}✖</span>`)
+                $("#keyword-div").append(`<span class="mr-1 keyword btn btn-outline-dark btn-sm bg-opacity-dark" onclick="Keywords.remove('${kw}')">${kw}✖</span>`)
             }
         }
     },
