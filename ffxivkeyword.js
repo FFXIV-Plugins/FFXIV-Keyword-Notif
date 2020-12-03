@@ -43,7 +43,7 @@ const Keywords = {
     },
     updateHtml: function () {
         $("#keyword-div .keyword").remove()
-        let keywords = Keywords.get() || []
+        let keywords = this.get() || []
         for (let kw of keywords) {
             if (kw) {
                 $("#keyword-div").append(`<span class="mr-1 keyword btn btn-outline-light btn-sm bg-opacity-dark" onclick="Keywords.remove('${kw}')">${kw}✖</span>`)
@@ -51,13 +51,13 @@ const Keywords = {
         }
     },
     add: function (kw) {
-        let keywords = Keywords.get()
+        let keywords = this.get()
         let newKeywords = keywords ? keywords.concat(kw) : [].concat(kw)
         Config.set('keyword', newKeywords.join(','))
         Keywords.updateHtml()
     },
     remove: function (kw) {
-        let keywords = Keywords.get()
+        let keywords = this.get()
         keywords.splice(keywords.indexOf(kw), 1)
         Config.set('keyword', keywords.join(','))
         Keywords.updateHtml()
@@ -73,44 +73,20 @@ const Keywords = {
 
 const NpcSay = {
     checkbox: () => document.querySelector("input[name='npcsay']"),
-    updateHtml: function () {
-        NpcSay.load()
-    },
-    ready: () => {
-        if (NpcSay.checkbox().checked) {
-            return true
-        } else {
-            return false
-        }
-    },
-    save: () => {
-        Config.set("npcsay:on", NpcSay.checkbox().checked ? "on" : "off")
-    },
-    load: () => {
-        NpcSay.checkbox().checked = Config.get("npcsay:on") === "on" ? true : false
-    }
+    updateHtml: () => this.load(),
+    ready: () => this.checkbox().checked ? true : false,
+    save: () => Config.set("npcsay:on", this.checkbox().checked ? "on" : "off"),
+    load: () => this.checkbox().checked = Config.get("npcsay:on") === "on" ? true : false,
 }
 
 const Tts = {
     checkbox: () => document.querySelector("input[name='tts']"),
-    updateHtml: function () {
-        Tts.load()
-    },
-    ready: () => {
-        if (Tts.checkbox().checked) {
-            return true
-        } else {
-            return false
-        }
-    },
-    save: () => {
-        Config.set("tts:on", Tts.checkbox().checked ? "on" : "off")
-    },
-    load: () => {
-        Tts.checkbox().checked = Config.get("tts:on") === "on" ? true : false
-    },
+    updateHtml: () => this.load(),
+    ready: () => this.checkbox().checked ? true : false,
+    save: () => Config.set("tts:on", this.checkbox().checked ? "on" : "off"),
+    load: () => this.checkbox().checked = Config.get("tts:on") === "on" ? true : false,
     send: (data) => {  // text to speech
-        if (Tts.ready()) {
+        if (this.ready()) {
             callOverlayHandler({ call: 'say', text: data })
         }
     }
@@ -118,7 +94,7 @@ const Tts = {
 
 const Webhook = {
     checkbox: () => document.querySelector("input[name='webhook']"),
-    get: function () {
+    get: () => {
         let url = Config.get('webhook:url')
         let key = Config.get('webhook:key')
         if (url && key) {
@@ -129,38 +105,28 @@ const Webhook = {
         }
         return null
     },
-    set: function ({url, key} = {}) {
+    set: ({url, key} = {}) => {
         Config.set("webhook:url", url ? url : "")
         Config.set("webhook:key", key ? key : "text")
-        Webhook.updateHtml()
+        this.updateHtml()
     },
-    updateHtml: function () {
-        let webhook = Webhook.get()
+    updateHtml: () => {
+        let webhook = this.get()
         if (webhook) {
             $("#webhook-btn").show()
             $("#webhook-info").text(`📡${webhook.url} {${webhook.key}:}`)
         } else {
             $("#webhook-btn").hide()
             $("#webhook-info").text("")
-            Webhook.checkbox().checked = false
+            this.checkbox().checked = false
         }
-        Webhook.load()
+        this.load()
     },
-    ready: () => {
-        if (Webhook.get() && Webhook.checkbox().checked) {
-            return true
-        } else {
-            return false
-        }
-    },
-    save: () => {
-        Config.set("webhook:on", Webhook.checkbox().checked ? "on" : "off")
-    },
-    load: () => {
-        Webhook.checkbox().checked = Config.get("webhook:on") === "on" ? true : false
-    },
+    ready: () => (this.get() && this.checkbox().checked) ? true : false,
+    save: () => Config.set("webhook:on", this.checkbox().checked ? "on" : "off"),
+    load: () => this.checkbox().checked = Config.get("webhook:on") === "on" ? true : false,
     send: (url, key, data) => {  // text to webhook
-        if (Webhook.ready()) {
+        if (this.ready()) {
             let param = {}
             param[key] = data
             $.post(url, JSON.stringify(param))
