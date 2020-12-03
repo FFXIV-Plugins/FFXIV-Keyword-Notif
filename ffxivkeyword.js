@@ -2,7 +2,13 @@ function isFirstTime () {
     if (Keywords.get()) {
         return false
     } else {
-        for (let word of ["招募队员结束，队员已经集齐", "成功完成了探险"]) {
+        // for in-game text search, visit: https://strings.wakingsands.com/
+        let defaultWords = [
+            "招募队员结束，队员已经集齐",
+            "成功完成了探险",
+            "招募队员结束，招募期限已过",
+        ]
+        for (let word of defaultWords) {
             Keywords.add(word)
         }
         return true
