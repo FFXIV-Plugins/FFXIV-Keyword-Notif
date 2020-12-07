@@ -2,7 +2,7 @@
 
 🇺🇸 English | [🇨🇳 简体中文](README-CN.md)
 
-[🔗 FFXIV Keyword Notif](https://ffxiv-plugins.github.io/FFXIV-Keyword-Notif/) This is a plugin for FFXIV ACT Ngld Overlay. Add keyword, and when the keyword show up in chat window, notify in voice and/or webhook.
+[🔗FFXIV Keyword Notif](https://ffxiv-plugins.github.io/FFXIV-Keyword-Notif/) This is a plugin for FFXIV ACT Ngld Overlay. Add keyword, and when the keyword show up in chat window, notify in voice and/or webhook.
 
 ## Screenshots
 * Show keywords and toggle Webhook and TTS on/off.
@@ -39,6 +39,4 @@
 * Click on "🗣️NPC" Button to switch voices for NPC on/off.
 
 ## 3rd Party Libs
-* jQuery: https://www.bootcdn.cn/jquery/
-* BootStrap4: https://www.bootcdn.cn/twitter-bootstrap/
-* Ngld Common JS: https://ngld.github.io/OverlayPlugin/assets/shared/common.min.js
+* [🔗jQuery](https://www.bootcdn.cn/jquery/) · [🔗BootStrap4](https://www.bootcdn.cn/twitter-bootstrap/) · [🔗Ngld Common JS](https://ngld.github.io/OverlayPlugin/assets/shared/common.min.js)

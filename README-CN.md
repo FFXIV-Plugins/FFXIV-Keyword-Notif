@@ -2,7 +2,7 @@
 
 [🇺🇸 English](README.md) | 🇨🇳 简体中文
 
-[🔗 FFXIV Keyword Notif](https://ffxiv-plugins.github.io/FFXIV-Keyword-Notif/) 这是一个用于 FF14 ACT 插件 Ngld 悬浮窗插件的插件。添加关键字后，当关键字出现在聊天栏时，会有语音提醒和/或 Webhook 提醒。
+[🔗FFXIV Keyword Notif](https://ffxiv-plugins.github.io/FFXIV-Keyword-Notif/) 这是一个用于 FF14 ACT 插件 Ngld 悬浮窗插件的插件。添加关键字后，当关键字出现在聊天栏时，会有语音提醒和/或 Webhook 提醒。
 
 ## 截图
 * 显示当前关键字列表；可切换 Webhook / TTS 的开关。
@@ -39,6 +39,4 @@
 * 点击“🗣️NPC”按钮来禁用/启用 NPC 对话语音功能。
 
 ## 第三方库
-* jQuery: https://www.bootcdn.cn/jquery/
-* BootStrap4: https://www.bootcdn.cn/twitter-bootstrap/
-* Ngld Common JS: https://ngld.github.io/OverlayPlugin/assets/shared/common.min.js
+* [🔗jQuery](https://www.bootcdn.cn/jquery/) · [🔗BootStrap4](https://www.bootcdn.cn/twitter-bootstrap/) · [🔗Ngld Common JS](https://ngld.github.io/OverlayPlugin/assets/shared/common.min.js)
