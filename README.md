@@ -1,6 +1,6 @@
 # FFXIV Keyword Notif
 
-🇺🇸 English | [🇨🇳 简体中文](README-CN.md)
+> 🇺🇸 English | [🇨🇳 简体中文](README-CN.md)
 
 [🔗FFXIV Keyword Notif](https://ffxiv-plugins.github.io/FFXIV-Keyword-Notif/) This is a plugin for FFXIV ACT Ngld Overlay. Add keyword, and when the keyword show up in chat window, notify in voice and/or webhook.
 
@@ -23,12 +23,12 @@
 3. You can also click on the keyword to remove it.
 
 ### Webhook
-* In game chat window, enter `/e webhook <url> <param>` for webhook notification.
+* In game chat window, enter `/e webhook <url> <key>` for webhook notification.
 * Click on "📡WEBHOOK" Button to switch webhook notification on/off.
 
 > How Webhook works:
 >
-> When the keyword shows, This plugin visit `<url>` by POST with data `{<param>: <message>}`.
+> When the keyword shows, This plugin visit `<url>` by POST with data `{<key>: <message>}`. Like `url?key=<message>` but in POST.
 >
 > For example: You can setup your webhook in [Slack](https://api.slack.com/apps). Create a new APP, turn on the "Incoming Webhooks", activate, and then "Add New Webhook to Workspace", you will get an URL such as `https://hooks.slack.com/services/ABC/DEF/GHIJKLMN`, and `text` as the data key name. Set this as plugin webhook notification, when the keywords show up, the slack app you just created will send you a message. If you have Slack on your phone, then you can catch the keywords notification on your phone.
 

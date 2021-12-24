@@ -46,7 +46,7 @@ const Keywords = {
         let keywords = Keywords.get() || []
         for (let kw of keywords) {
             if (kw) {
-                $("#keyword-div").append(`<span class="mr-1 keyword btn btn-outline-dark text-white btn-sm bg-opacity-dark" onclick="Keywords.remove('${kw}')">${kw}✖</span>`)
+                $("#keyword-div").append(`<span class="mr-1 keyword btn btn-outline-dark text-white btn-sm bg-opacity-dark" onclick="Keywords.remove('${kw}')">${kw}</span>`)
             }
         }
     },
@@ -114,10 +114,10 @@ const Webhook = {
         let webhook = Webhook.get()
         if (webhook) {
             $("#webhook-btn").show()
-            $("#webhook-info").text(`📡${webhook.url} {${webhook.key}:}`)
+            $("#webhook-info > code").text(webhook.url +  ` :` + webhook.key)
         } else {
             $("#webhook-btn").hide()
-            $("#webhook-info").text("")
+            $("#webhook-info > code").text("")
             Webhook.checkbox().checked = false
         }
         Webhook.load()
@@ -133,6 +133,13 @@ const Webhook = {
         }
     }
 }
+
+
+function toggleHelp () {
+    $('#help-div').slideToggle('fast')
+    $('#webhook-info').slideToggle('fast')
+}
+
 
 function update (data) {
     let content = JSON.stringify(data)

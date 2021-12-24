@@ -16,6 +16,13 @@
             .hidden {
                 display: none;
             }
+            .keyword::after {
+                content: "✘";
+                color: silver;
+                padding-left: 5px;
+                margin-left: 5px;
+                border-left: dashed 1px gray;
+            }
         </style>
     </head>
     <body>
@@ -36,29 +43,20 @@
                             <input type="checkbox" name="npcsay" onclick="NpcSay.save()">
                             🗣️NPC
                         </label>
-                        <span class="btn btn-outline-dark text-white btn-sm bg-opacity-dark" onclick="$('#help-div').fadeToggle('fast')">❔</span>
+                        <span class="btn btn-outline-dark text-white btn-sm bg-opacity-dark" onclick="toggleHelp()">❔</span>
+                        <span id="help-div" class="hidden mt-1 text-nowrap text-truncate">
+                            <code class="chinese text-light bg-opacity-dark">/e 关键字 [任意词] · /e webhook [地址] [参数名]</code>
+                            <code class="english text-light bg-opacity-dark">/e keyword [word] · /e webhook [url] [key]</code>
+                        </span>
+                        <div id="webhook-info" class="hidden mt-1">
+                            📡<code class="text-light bg-opacity-dark"></code>
+                        </div>
                     </span>
                 </div><!--.col-->
             </div><!--.row-->
             <div class="row hidable">
                 <div class="col p-1">
                     <span id="keyword-div" class="bg-transparent"></span>
-                </div><!--.col-->
-            </div><!--.row-->
-            <div id="help-div" class="hidden row mt-1 text-nowrap text-truncate">
-                <div class="col p-1">
-                    <div>
-                        <code class="chinese text-light bg-opacity-dark">/e 关键字 [任意词] · /e webhook [地址] [参数名]</code>
-                    </div>
-                    <div>
-                        <code class="english text-light bg-opacity-dark">/e keyword [word] · /e webhook [url] [param]</code>
-                    </div>
-                    <div>
-                        <code class="text-light bg-opacity-dark"><!--put readme url here--></code>
-                    </div>
-                    <div>
-                        <code id="webhook-info" class="text-light bg-opacity-dark"></code>
-                    </div>
                 </div><!--.col-->
             </div><!--.row-->
         </div><!--.container-->
