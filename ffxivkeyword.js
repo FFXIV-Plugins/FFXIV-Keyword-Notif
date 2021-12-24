@@ -16,13 +16,14 @@ function isFirstTime () {
 }
 
 function i18n () {
+    // default
+    $(".chinese").hide()
+    $(".english").show()
+    // translate
     callOverlayHandler({call: "getLanguage"}).then((lang) => {
-        if (lang.language=== 'Chinese') {
+        if (lang.language == 'Chinese') {
             $(".chinese").show()
             $(".english").hide()
-        } else {
-            $(".chinese").hide()
-            $(".english").show()
         }
     })
 }
