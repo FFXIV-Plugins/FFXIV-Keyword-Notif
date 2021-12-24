@@ -33,10 +33,13 @@
 > 例：你可以使用 [Slack](https://api.slack.com/apps) 设置 Webhook。新建一个 APP 激活（Activate） 「Incoming Webhooks」，然后 「Add New Webhook to Workspace」，你将得到一个地址 `https://hooks.slack.com/services/ABC/DEF/GHIJKLMN`（默认参数名 `text`）。将这两者设置为插件的 Webhook，当关键字出现时，Slack 会将消息转发给你。在手机上安装 Slack，你就可以用手机接受关键字提醒了。
 
 ### TTS 语音播报
-* 点击「🎙TTS」按钮来禁用/启用 TTS 功能。
+* 点击「🎙语音播报」按钮来禁用/启用语音播报功能。
 
 ### NPC 对话语音
 * 点击「🗣️NPC」按钮来禁用/启用 NPC 对话语音功能。
+
+### 队伍对话抓取
+* 点击「🚩小队」按钮来禁用/启用小队对话抓取功能。
 
 ## 第三方库
 * [🔗jQuery](https://www.bootcdn.cn/jquery/) · [🔗BootStrap4](https://www.bootcdn.cn/twitter-bootstrap/) · [🔗Ngld Common JS](https://ngld.github.io/OverlayPlugin/assets/shared/common.min.js)

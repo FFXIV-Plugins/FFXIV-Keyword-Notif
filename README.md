@@ -38,5 +38,8 @@
 ### Voices for NPC
 * Click on "🗣️NPC" Button to switch voices for NPC on/off.
 
+### Party Chat
+* Click on "🚩Party" Button to switch party chat filter on/off.
+
 ## 3rd Party Libs
 * [🔗jQuery](https://www.bootcdn.cn/jquery/) · [🔗BootStrap4](https://www.bootcdn.cn/twitter-bootstrap/) · [🔗Ngld Common JS](https://ngld.github.io/OverlayPlugin/assets/shared/common.min.js)

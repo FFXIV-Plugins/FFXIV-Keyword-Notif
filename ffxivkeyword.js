@@ -71,6 +71,14 @@ const Keywords = {
     }
 }
 
+const PartySay = {
+    checkbox: () => document.querySelector("input[name='partysay']"),
+    updateHtml: () => PartySay.load(),
+    ready: () => PartySay.checkbox().checked ? true : false,
+    save: () => Config.set("partysay:on", PartySay.checkbox().checked ? "on" : "off"),
+    load: () => PartySay.checkbox().checked = Config.get("partysay:on") === "on" ? true : false,
+}
+
 const NpcSay = {
     checkbox: () => document.querySelector("input[name='npcsay']"),
     updateHtml: () => NpcSay.load(),
@@ -150,8 +158,7 @@ function update (data) {
     /* for more log types, visit: https://github.com/quisquous/cactbot/blob/main/docs/LogGuide.md#00-logline */
     // console.debug(`logtype:${logType}: ${logProperties}`)
     if (logType === '00') {
-        let [logSubtype, logNpc, logText, logId] = logProperties
-        let webhook = Webhook.get()
+        let [logSubtype, logChar, logText, logId] = logProperties
         for (let kw of Keywords.get()) {
             if (kw && logText && logText.includes(kw)) {
                 Tts.send(logText)
@@ -172,9 +179,31 @@ function update (data) {
         }
         if (logSubtype == '003d') {  // Npc conversation.
             if (NpcSay.ready()) {
-                Tts.send(logText)  // logText contains only the content. logNpc for NPC name.
+                Tts.send(logText)  // logText contains only the content. logChar for NPC name.
             }
         }
+        if (logSubtype == '000e') {  // Party Member Conversation.
+            if (PartySay.ready()) {
+                Webhook.send("/p " + logChar + ": " + logText)
+                Tts.send(logChar + ": " + logText)
+            }
+        }
+        if (logSubtype == '2239') { // Party Makeup Change.
+            if (PartySay.ready()) {
+                Webhook.send("/p " + logText)
+                Tts.send(logText)
+            }
+        }
+        if (logSubtype == '001b') { // Newbie Channel.
+            // "/n " + logChar + ": " + logText
+        }
+        if (logSubtype == '001c') { // Emotion Channel.
+            // logChar + ": " + logText
+        }
+        if (logSubtype == '0039') { // System Channel.
+            // logText
+        }
+        // console.log(logProperties)
     }
 }
 
@@ -191,4 +220,5 @@ $(function () {
     Webhook.updateHtml()
     Tts.updateHtml()
     NpcSay.updateHtml()
+    PartySay.updateHtml()
 })
