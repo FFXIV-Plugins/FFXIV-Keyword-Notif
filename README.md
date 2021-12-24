@@ -28,7 +28,7 @@
 
 > How Webhook works:
 >
-> When the keyword shows, This plugin visit `<url>` by POST with data `{<key>: <message>}`. Like `url?key=<message>` but in POST.
+> When the keyword shows, This plugin visit `<url>` by POST with data `{<key>: <message>}`.
 >
 > For example: You can setup your webhook in [Slack](https://api.slack.com/apps). Create a new APP, turn on the "Incoming Webhooks", activate, and then "Add New Webhook to Workspace", you will get an URL such as `https://hooks.slack.com/services/ABC/DEF/GHIJKLMN`, and `text` as the data key name. Set this as plugin webhook notification, when the keywords show up, the slack app you just created will send you a message. If you have Slack on your phone, then you can catch the keywords notification on your phone.
 
