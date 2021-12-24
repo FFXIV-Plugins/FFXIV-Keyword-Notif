@@ -6,10 +6,10 @@
 
 ## Screenshots
 * Show keywords and toggle Webhook and TTS on/off.
-    * ![screenshot-01](resources/screenshot-01.png)
+    * ![screenshot-01](resources/screenshot-01.jpg)
 
 * Normally, only an icon shows up. Click to hide/show dashboard.
-    * ![screenshot-02](resources/screenshot-02.png)
+    * ![screenshot-02](resources/screenshot-02.jpg)
 
 ## Usage
 ### Get Started
