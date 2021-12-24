@@ -24,7 +24,7 @@
 
 ### Webhook
 * In game chat window, enter `/e webhook <url> <key>` for webhook notification.
-* Click on "📡WEBHOOK" Button to switch webhook notification on/off.
+* Click on "📡Webhook" Button to switch webhook notification on/off.
 
 > How Webhook works:
 >
