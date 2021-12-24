@@ -125,11 +125,11 @@ const Webhook = {
     ready: () => (Webhook.get() && Webhook.checkbox().checked) ? true : false,
     save: () => Config.set("webhook:on", Webhook.checkbox().checked ? "on" : "off"),
     load: () => Webhook.checkbox().checked = Config.get("webhook:on") === "on" ? true : false,
-    send: (url, key, data) => {  // text to webhook
+    send: (data) => {  // text to webhook
         if (Webhook.ready()) {
             let param = {}
-            param[key] = data
-            $.post(url, JSON.stringify(param))
+            param[Webhook.get().key] = data
+            $.post(Webhook.get().url, JSON.stringify(param))
         }
     }
 }
@@ -153,13 +153,9 @@ function update (data) {
         let [logSubtype, logNpc, logText, logId] = logProperties
         let webhook = Webhook.get()
         for (let kw of Keywords.get()) {
-            if (kw) {
-                if (logText && logText.includes(kw)) {
-                    Tts.send(logText)
-                    if (webhook) {
-                        Webhook.send(webhook.url, webhook.key, logText)
-                    }
-                }
+            if (kw && logText && logText.includes(kw)) {
+                Tts.send(logText)
+                Webhook.send(logText)
             }
         }
         if (logText.startsWith("关键字 ") || logText.startsWith("keyword ")) {
