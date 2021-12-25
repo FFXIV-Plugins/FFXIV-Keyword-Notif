@@ -138,7 +138,14 @@ const Webhook = {
         if (Webhook.ready()) {
             let param = {}
             param[Webhook.get().key] = data
-            $.post(Webhook.get().url, JSON.stringify(param))
+            $.ajax({
+                url: Webhook.get().url,
+                type: "POST",
+                data: JSON.stringify(param),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: null,
+            })
         }
     }
 }
