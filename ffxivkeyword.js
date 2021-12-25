@@ -138,14 +138,16 @@ const Webhook = {
         if (Webhook.ready()) {
             let param = {}
             param[Webhook.get().key] = data
-            $.ajax({
-                url: Webhook.get().url,
-                type: "POST",
-                data: JSON.stringify(param),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: null,
-            })
+            if (Webhook.get().url.search("discord.com") >= 0) {  // discord.com need application/json with preflight
+                $.ajax({
+                    url: Webhook.get().url,
+                    type: "POST",
+                    data: JSON.stringify(param),
+                    contentType: "application/json; charset=utf-8",
+                })
+            } else {  // slack.com does not support preflight, so
+                $.post(Webhook.get().url, JSON.stringify(param))
+            }
         }
     }
 }
