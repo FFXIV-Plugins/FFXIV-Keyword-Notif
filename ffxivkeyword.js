@@ -1,3 +1,5 @@
+const VERSION = "6.00.0"
+
 function isFirstTime () {
     if (Keywords.get()) {
         return false
@@ -160,7 +162,6 @@ function toggleHelp () {
 
 
 function update (data) {
-    let content = JSON.stringify(data)
     if (!data.line) {
         return null
     }
@@ -169,6 +170,7 @@ function update (data) {
     // console.debug(`logtype:${logType}: ${logProperties}`)
     if (logType === '00') {
         let [logSubtype, logChar, logText, logId] = logProperties
+        logSubtype = logSubtype.toLowerCase()  // Both '003D' and '003d' works.
         for (let kw of Keywords.get()) {
             if (kw && logText && logText.includes(kw)) {
                 Tts.send(logText)
@@ -191,6 +193,9 @@ function update (data) {
             if (NpcSay.ready()) {
                 Tts.send(logText)  // logText contains only the content. logChar for NPC name.
             }
+
+            console.debug(logSubtype)
+            console.debug(logProperties)
         }
         if (logSubtype == '000e') {  // Party Member Conversation.
             if (PartySay.ready()) {
@@ -213,7 +218,6 @@ function update (data) {
         if (logSubtype == '0039') { // System Channel.
             // logText
         }
-        // console.log(logProperties)
     }
 }
 
@@ -231,4 +235,5 @@ $(function () {
     Tts.updateHtml()
     NpcSay.updateHtml()
     PartySay.updateHtml()
+    console.log(`[LOADED] FFXIV Keyword Notif: Version ${VERSION}`)
 })
