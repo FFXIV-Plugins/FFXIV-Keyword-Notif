@@ -1,4 +1,4 @@
-const VERSION = "6.00.2"
+const VERSION = "6.00.3"
 
 function isFirstTime () {
     if (Keywords.get()) {
@@ -167,7 +167,7 @@ function update (data) {
     }
     let [logType, logTime, ...logProperties] = data.line
     /* for more log types, visit: https://github.com/quisquous/cactbot/blob/main/docs/LogGuide.md#00-logline */
-    // console.debug(`logtype:${logType}: ${logProperties}`)
+    //console.debug(`logtype:${logType} -> ${logProperties}`)
     if (logType === '00') {
         let [logSubtype, logChar, logText, logId] = logProperties
         logSubtype = logSubtype.toLowerCase()  // Both '003D' and '003d' works.
@@ -193,9 +193,7 @@ function update (data) {
             if (NpcSay.ready()) {
                 Tts.send(logText)  // logText contains only the content. logChar for NPC name.
             }
-
-            console.debug(logSubtype)
-            console.debug(logProperties)
+            //console.debug(`logSubtype:${logSubtype} -> ${logProperties}`)
         }
         if (logSubtype == '000e') {  // Party Member Conversation.
             if (PartySay.ready()) {
