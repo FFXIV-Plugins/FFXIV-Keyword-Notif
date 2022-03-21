@@ -1,4 +1,4 @@
-const VERSION = "6.00.0"
+const VERSION = "6.00.2"
 
 function isFirstTime () {
     if (Keywords.get()) {
@@ -138,16 +138,16 @@ const Webhook = {
     load: () => Webhook.checkbox().checked = Config.get("webhook:on") === "on" ? true : false,
     send: (data) => {  // text to webhook
         if (Webhook.ready()) {
-            let param = {}
-            param[Webhook.get().key] = data
             if (Webhook.get().url.search("discord.com") >= 0) {  // discord.com need application/json with preflight
                 $.ajax({
                     url: Webhook.get().url,
                     type: "POST",
-                    data: JSON.stringify(param),
+                    data: JSON.stringify({"content": data}),
                     contentType: "application/json; charset=utf-8",
                 })
             } else {  // slack.com does not support preflight, so
+                let param = {}
+                param[Webhook.get().key] = data
                 $.post(Webhook.get().url, JSON.stringify(param))
             }
         }
