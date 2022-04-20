@@ -1,4 +1,4 @@
-const VERSION = "6.00.3"
+const VERSION = "6.00.4"
 
 function isFirstTime () {
     if (Keywords.get()) {
@@ -32,10 +32,10 @@ function i18n () {
 
 const Config = {
     get: function (key) {
-        return window.localStorage.getItem(`config:${key}`)
+        return window.localStorage.getItem(`keywordnotif:config:${key}`)
     },
     set: function (key, value) {
-        return window.localStorage.setItem(`config:${key}`, value)
+        return window.localStorage.setItem(`keywordnotif:config:${key}`, value)
     },
 }
 
