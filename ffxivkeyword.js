@@ -1,4 +1,4 @@
-const VERSION = "6.00.4"
+const VERSION = "6.00.5"
 
 function isFirstTime () {
     if (Keywords.get()) {
@@ -151,7 +151,12 @@ const Webhook = {
                 $.post(Webhook.get().url, JSON.stringify(param))
             }
         }
-    }
+    },
+    hello: () => {  // send a message when checkbox is checked.
+        if (Webhook.checkbox().checked) {
+            Webhook.send("Webhook: ON")
+        }
+    },
 }
 
 
@@ -167,7 +172,7 @@ function update (data) {
     }
     let [logType, logTime, ...logProperties] = data.line
     /* for more log types, visit: https://github.com/quisquous/cactbot/blob/main/docs/LogGuide.md#00-logline */
-    //console.debug(`logtype:${logType} -> ${logProperties}`)
+    // console.debug(`logtype:${logType} -> ${logProperties}`)
     if (logType === '00') {
         let [logSubtype, logChar, logText, logId] = logProperties
         logSubtype = logSubtype.toLowerCase()  // Both '003D' and '003d' works.
