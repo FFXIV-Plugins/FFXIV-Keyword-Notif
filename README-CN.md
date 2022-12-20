@@ -15,7 +15,7 @@
 ### 初次使用
 1. 打开 ACT → 插件 → ngld 悬浮窗插件 → 新建。
 2. 名称：随意，预设：自订，种类：数据统计。
-3. 悬浮窗路径：`https://ffxiv-plugins.migawari.top/FFXIV-Keyword-Notif/ffxivkeyword.html`
+3. 悬浮窗路径：`https://ffxiv-plugins.migawari.tk/FFXIV-Keyword-Notif/ffxivkeyword.html`
 
 ### 增删关键字
 1. 在游戏的聊天窗口内，输入 `/e 关键字 完成了探险` 来将 「完成了探险」 加入关键字列表。
