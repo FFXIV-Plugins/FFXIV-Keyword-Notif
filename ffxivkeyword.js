@@ -1,4 +1,4 @@
-const VERSION = "6.00.5"
+const VERSION = "6.20.1"
 
 function isFirstTime () {
     if (Keywords.get()) {
@@ -37,6 +37,11 @@ const Config = {
     set: function (key, value) {
         return window.localStorage.setItem(`keywordnotif:config:${key}`, value)
     },
+}
+
+const PrimaryPlayer = {
+    id: 0,
+    name: "",
 }
 
 const Keywords = {
@@ -173,8 +178,14 @@ function update (data) {
     let [logType, logTime, ...logProperties] = data.line
     /* for more log types, visit: https://github.com/quisquous/cactbot/blob/main/docs/LogGuide.md#00-logline */
     // console.debug(`logtype:${logType} -> ${logProperties}`)
+    if (logType === '02') {
+        let [logId, logChar, logHash] = logProperties  // logChar for Primary Player name.
+        PrimaryPlayer.id = logId
+        PrimaryPlayer.name = logChar
+    }
     if (logType === '00') {
-        let [logSubtype, logChar, logText, logId] = logProperties
+        let [logSubtype, logChar, logText, logHash] = logProperties
+        // console.debug(`'${logSubtype}', '${logChar}', '${logText}', '${logHash}'`)
         logSubtype = logSubtype.toLowerCase()  // Both '003D' and '003d' works.
         for (let kw of Keywords.get()) {
             if (kw && logText && logText.includes(kw)) {
@@ -198,12 +209,17 @@ function update (data) {
             if (NpcSay.ready()) {
                 Tts.send(logText)  // logText contains only the content. logChar for NPC name.
             }
-            //console.debug(`logSubtype:${logSubtype} -> ${logProperties}`)
         }
         if (logSubtype == '000e') {  // Party Member Conversation.
+            logChar = logChar.substring(1)  // Remove party index from name. ①NAME -> Name
             if (PartySay.ready()) {
                 Webhook.send("/p " + logChar + ": " + logText)
-                Tts.send(logChar + ": " + logText)
+                if (PrimaryPlayer.name !== logChar) {
+                    console.debug(logChar)
+                    console.debug(PrimaryPlayer.name)
+                    console.debug(PrimaryPlayer.name !== logChar)
+                    Tts.send(logChar + "说: " + logText)
+                }
             }
         }
         if (logSubtype == '2239') { // Party Makeup Change.
