@@ -1,4 +1,5 @@
-const VERSION = "6.20.1"
+const VERSION = "6.25.1"
+var LANGUAGE = "English"
 
 function isFirstTime () {
     if (Keywords.get()) {
@@ -23,6 +24,7 @@ function i18n () {
     $(".english").show()
     // translate
     callOverlayHandler({call: "getLanguage"}).then((lang) => {
+        LANGUAGE = lang.language
         if (lang.language == 'Chinese') {
             $(".chinese").show()
             $(".english").hide()
@@ -75,6 +77,12 @@ const Keywords = {
             Keywords.remove(kw)
         } else {
             Keywords.add(kw)
+        }
+    },
+    prompt: function () {
+        let keyword = window.prompt(LANGUAGE == 'Chinese' ? "关键字：" : "Keyword:")
+        if (keyword) {
+            Keywords.toggle(keyword)
         }
     }
 }
