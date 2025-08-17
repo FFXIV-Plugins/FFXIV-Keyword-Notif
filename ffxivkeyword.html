@@ -4,8 +4,7 @@
         <title>FFXIV Keyword Notif</title>
         <link rel="stylesheet" href="3rd/bootstrap.min.css">
         <script src="3rd/common.min.js"></script>
-        <script src="3rd/jquery.js"></script>
-        <script charset="utf-8" src="ffxivkeyword.js?version=6.25.1"></script>
+        <script charset="utf-8" src="ffxivkeyword.js?version=7.0.0"></script>
         <style>
             .bg-opacity-dark {
                 background-color: rgba(0, 0, 0, 0.5);
@@ -29,7 +28,7 @@
         <div class="container-fluid bg-transparent">
             <div class="row">
                 <div class="col p-1">
-                    <span class="btn btn-outline-light btn-sm bg-opacity-dark" onclick="$('.hidable').fadeToggle('fast')">📣</span>
+                    <span class="btn btn-outline-light btn-sm bg-opacity-dark" onclick="toggleHidable()">📣</span>
                     <span class="hidable">
                         <label id="webhook-btn" class="mb-0 btn btn-outline-dark text-white btn-sm bg-opacity-dark">
                             <input type="checkbox" name="webhook" onclick="Webhook.save()" onchange="Webhook.hello()">

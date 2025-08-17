@@ -1,4 +1,4 @@
-const VERSION = "6.25.1"
+const VERSION = "7.0.0"
 var LANGUAGE = "English"
 
 function isFirstTime () {
@@ -10,6 +10,7 @@ function isFirstTime () {
             "招募队员结束，队员已经集齐",
             "成功完成了探险",
             "招募队员结束，招募期限已过",
+            "<tts>"
         ]
         for (let word of defaultWords) {
             Keywords.add(word)
@@ -20,14 +21,15 @@ function isFirstTime () {
 
 function i18n () {
     // default
-    $(".chinese").hide()
-    $(".english").show()
+    // 原生 JS 隐藏/显示
+    document.querySelectorAll('.chinese').forEach(ele => ele.classList.add("hidden"));
+    document.querySelectorAll('.english').forEach(ele => ele.classList.remove("hidden"));
     // translate
     callOverlayHandler({call: "getLanguage"}).then((lang) => {
         LANGUAGE = lang.language
         if (lang.language == 'Chinese') {
-            $(".chinese").show()
-            $(".english").hide()
+            document.querySelectorAll('.chinese').forEach(el => el.classList.remove("hidden"));
+            document.querySelectorAll('.english').forEach(el => el.classList.add("hidden"));
         }
     })
 }
@@ -52,11 +54,15 @@ const Keywords = {
         return keywords ? keywords.split(',') : null
     },
     updateHtml: function () {
-        $("#keyword-div .keyword").remove()
+        document.querySelectorAll("#keyword-div .keyword").forEach(ele => ele.remove());
         let keywords = Keywords.get() || []
         for (let kw of keywords) {
             if (kw) {
-                $("#keyword-div").append(`<span class="mr-1 keyword btn btn-outline-dark text-white btn-sm bg-opacity-dark" onclick="Keywords.remove('${kw}')">${kw}</span>`)
+                const span = document.createElement("span");
+                span.className = "mr-1 keyword btn btn-outline-dark text-white btn-sm bg-opacity-dark";
+                span.textContent = kw;
+                span.onclick = function() { Keywords.remove(kw); };
+                document.querySelector("#keyword-div").appendChild(span);
             }
         }
     },
@@ -137,11 +143,11 @@ const Webhook = {
     updateHtml: () => {
         let webhook = Webhook.get()
         if (webhook) {
-            $("#webhook-btn").show()
-            $("#webhook-info > code").text(webhook.url +  ` :` + webhook.key)
+            document.querySelector("#webhook-btn").classList.remove("hidden");
+            document.querySelector("#webhook-info > code").textContent = `${webhook.url} :${webhook.key}`
         } else {
-            $("#webhook-btn").hide()
-            $("#webhook-info > code").text("")
+            document.querySelector("#webhook-btn").classList.add("hidden");
+            document.querySelector("#webhook-info > code").textContent = ""
             Webhook.checkbox().checked = false
         }
         Webhook.load()
@@ -152,16 +158,19 @@ const Webhook = {
     send: (data) => {  // text to webhook
         if (Webhook.ready()) {
             if (Webhook.get().url.search("discord.com") >= 0) {  // discord.com need application/json with preflight
-                $.ajax({
-                    url: Webhook.get().url,
-                    type: "POST",
-                    data: JSON.stringify({"content": data}),
-                    contentType: "application/json; charset=utf-8",
+                fetch(Webhook.get().url, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json; charset=utf-8" },
+                    body: JSON.stringify({ "content": data })
                 })
             } else {  // slack.com does not support preflight, so
                 let param = {}
                 param[Webhook.get().key] = data
-                $.post(Webhook.get().url, JSON.stringify(param))
+                fetch(Webhook.get().url, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json; charset=utf-8" },
+                    body: JSON.stringify(param)
+                })
             }
         }
     },
@@ -174,10 +183,13 @@ const Webhook = {
 
 
 function toggleHelp () {
-    $('#help-div').slideToggle('fast')
-    $('#webhook-info').slideToggle('fast')
+    console.log("Toggling help")
+    document.querySelectorAll("#help-div, #webhook-info").forEach(ele => ele.classList.toggle("hidden"))
 }
 
+function toggleHidable () {
+    document.querySelectorAll('.hidable').forEach(ele => ele.classList.toggle('hidden'))
+}
 
 function update (data) {
     if (!data.line) {
@@ -252,9 +264,9 @@ function update (data) {
 addOverlayListener("LogLine", (e) => update(e))
 startOverlayEvents()
 
-$(function () {
+document.addEventListener("DOMContentLoaded", function () {
     if (!isFirstTime()) {
-        $('.hidable').hide()
+        document.querySelectorAll('.hidable').forEach(ele => ele.classList.add("hidden"))
     }
     i18n()
     Keywords.updateHtml()
