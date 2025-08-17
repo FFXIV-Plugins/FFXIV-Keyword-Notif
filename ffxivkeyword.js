@@ -1,4 +1,4 @@
-const VERSION = "7.0.0"
+const VERSION = "7.0.1"
 var LANGUAGE = "English"
 
 function isFirstTime () {
@@ -7,10 +7,11 @@ function isFirstTime () {
     } else {
         /* for in-game text search, visit: https://strings.wakingsands.com/ */
         let defaultWords = [
+            "<tts>",
             "招募队员结束，队员已经集齐",
-            "成功完成了探险",
             "招募队员结束，招募期限已过",
-            "<tts>"
+            "部队消息：部队成员",
+            "成功完成了探险"
         ]
         for (let word of defaultWords) {
             Keywords.add(word)
