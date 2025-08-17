@@ -1,4 +1,4 @@
-const VERSION = "7.0.1"
+const VERSION = "7.0.2"
 var LANGUAGE = "English"
 
 function isFirstTime () {
@@ -22,7 +22,6 @@ function isFirstTime () {
 
 function i18n () {
     // default
-    // 原生 JS 隐藏/显示
     document.querySelectorAll('.chinese').forEach(ele => ele.classList.add("hidden"));
     document.querySelectorAll('.english').forEach(ele => ele.classList.remove("hidden"));
     // translate
